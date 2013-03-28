@@ -16,7 +16,7 @@ public class PlayerBuilder {
     public static final String ADVANCED_AI_PLAYER = "dominoes.players.AIPlayer";
     public static final String SIMPLE_AI_PLAYER = "dominoes.players.RuleBaseAIPlayer";
 
-    static PlayerProxy BuildPlayer(String typeString, String playerName, boolean isHuman, DominoUIImp delegate) {
+    static PlayerProxy BuildPlayer(String typeString, DominoUIImp delegate) {
         Class classForPlayer;
         PlayerProxy playerProxy = null;
 
@@ -25,8 +25,7 @@ public class PlayerBuilder {
             try {
 
                 playerProxy = new PlayerProxy((DominoPlayer) classForPlayer.newInstance());
-                playerProxy.setName(playerName);
-                playerProxy.setIsHuman(isHuman);
+                playerProxy.setIsHuman(playerIsHumanType(typeString));
                 playerProxy.setControl(delegate);
 
             } catch (InstantiationException | IllegalAccessException ex) {
@@ -37,5 +36,14 @@ public class PlayerBuilder {
         }
 
         return playerProxy;
+    }
+    
+    
+    static boolean playerIsHumanType (String typeString) {
+        if (typeString.equals(LOCAL_PLAYER)) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }

@@ -189,29 +189,32 @@ public class DominoUIImp implements Initializable, DominoUI {
         this.pointsToWin = Integer.parseInt(this.pointsToWinField.getText());
 
         if (player1KindChoiceBox.getSelectionModel().selectedIndexProperty().intValue() == 0) {
-            playerOne = PlayerBuilder.BuildPlayer(PlayerBuilder.LOCAL_PLAYER, player1NameField.getText(), true, this);
+            playerOne = PlayerBuilder.BuildPlayer(PlayerBuilder.LOCAL_PLAYER, this);
         }
 
         if (player1KindChoiceBox.getSelectionModel().selectedIndexProperty().intValue() == 1) {
-            playerOne = PlayerBuilder.BuildPlayer(PlayerBuilder.ADVANCED_AI_PLAYER, player1NameField.getText(), false, this);
+            playerOne = PlayerBuilder.BuildPlayer(PlayerBuilder.ADVANCED_AI_PLAYER, this);
         }
 
         if (player1KindChoiceBox.getSelectionModel().selectedIndexProperty().intValue() == 2) {
-            playerOne = PlayerBuilder.BuildPlayer(PlayerBuilder.SIMPLE_AI_PLAYER, player1NameField.getText(), false, this);
+            playerOne = PlayerBuilder.BuildPlayer(PlayerBuilder.SIMPLE_AI_PLAYER, this);
         }
 
         if (player2KindChoiceBox.getSelectionModel().selectedIndexProperty().intValue() == 0) {
-            playerTwo = PlayerBuilder.BuildPlayer(PlayerBuilder.LOCAL_PLAYER, player2NameField.getText(), true, this);
+            playerTwo = PlayerBuilder.BuildPlayer(PlayerBuilder.LOCAL_PLAYER, this);
         }
 
         if (player2KindChoiceBox.getSelectionModel().selectedIndexProperty().intValue() == 1) {
-            playerTwo = PlayerBuilder.BuildPlayer(PlayerBuilder.ADVANCED_AI_PLAYER, player2NameField.getText(), false, this);
+            playerTwo = PlayerBuilder.BuildPlayer(PlayerBuilder.ADVANCED_AI_PLAYER, this);
         }
 
         if (player2KindChoiceBox.getSelectionModel().selectedIndexProperty().intValue() == 2) {
-            playerTwo = PlayerBuilder.BuildPlayer(PlayerBuilder.SIMPLE_AI_PLAYER, player2NameField.getText(), false, this);
+            playerTwo = PlayerBuilder.BuildPlayer(PlayerBuilder.SIMPLE_AI_PLAYER, this);
         }
 
+        playerOne.setName(player1NameField.getText());
+        playerTwo.setName(player2NameField.getText());
+        
         game = new Dominoes(this, playerOne, playerTwo, pointsToWin, maxDots);
 
         DominoPlayer winner = game.play(); // This will block until game is over
