@@ -1,6 +1,5 @@
 *.class
 .DS_Store
 *.bak
-*.xml
-*.mf
+
 
