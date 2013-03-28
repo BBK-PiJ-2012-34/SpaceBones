@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+
+<fx:root type="javafx.scene.layout.AnchorPane" maxHeight="176.0" maxWidth="1024.0" minHeight="176.0" minWidth="996.0" prefHeight="176.0" prefWidth="996.0" xmlns:fx="http://javafx.com/fxml">
+  <children>
+    <Label fx:id="titleCard" alignment="CENTER" contentDisplay="CENTER" layoutX="14.0" layoutY="135.0" maxHeight="36.0" maxWidth="996.0" minHeight="36.0" minWidth="968.0" prefHeight="36.0" prefWidth="968.0" style="-fx-border-style: solid;&#10;-fx-border-color: #41cc00;&#10;-fx-border-radius: 25px;&#10;-fx-border-width: 5px;&#10;&#10;" text="Player 1" textAlignment="CENTER" textFill="#41cc00">
+      <font>
+        <Font size="22.0" />
+      </font>
+    </Label>
+    <HBox fx:id="bonesHBox" alignment="CENTER" maxHeight="140.0" maxWidth="996.0" minHeight="140.0" minWidth="996.0" prefHeight="140.0" prefWidth="996.0" spacing="-100.0" style="-fx-border-style: solid;&#10;-fx-border-color: #41cc00;&#10;-fx-border-radius: 25px;&#10;-fx-border-width: 5px;" />
+  </children>
+  <effect>
+    <Reflection bottomOpacity="0.015" fraction="0.18633333333333332" topOffset="-38.0" topOpacity="0.126">
+      <input>
+        <Bloom />
+      </input>
+    </Reflection>
+  </effect>
+</fx:root>

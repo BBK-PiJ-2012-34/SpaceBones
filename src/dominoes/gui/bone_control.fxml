@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+
+<fx:root type="javafx.scene.layout.VBox" style="-fx-border-style: solid;&#10;-fx-border-color: #41cc00;&#10;-fx-border-radius: 25px;&#10;-fx-border-width: 5px;" xmlns:fx="http://javafx.com/fxml">
+  <children>
+    <Label fx:id="left" alignment="CENTER" contentDisplay="CENTER" prefWidth="132.0" text="..." textAlignment="CENTER">
+      <font>
+        <Font size="84.0" fx:id="x2" />
+      </font>
+      <textFill>
+        <Color blue="0.000" green="0.800" red="0.255" fx:id="x1" />
+      </textFill>
+      <VBox.margin>
+        <Insets bottom="25.0" />
+      </VBox.margin>
+    </Label>
+    <Line endX="116.58578491210938" endY="1.5857864618301392" stroke="$x1" strokeWidth="3.5">
+      <VBox.margin>
+        <Insets left="5.0" right="5.0" />
+      </VBox.margin>
+    </Line>
+    <Label fx:id="right" alignment="CENTER" contentDisplay="CENTER" font="$x2" prefWidth="131.0" text="..." textAlignment="CENTER" textFill="$x1">
+      <VBox.margin>
+        <Insets top="25.0" />
+      </VBox.margin>
+    </Label>
+  </children>
+  <effect>
+    <Bloom />
+  </effect>
+  <padding>
+    <Insets bottom="30.0" top="30.0" />
+  </padding>
+</fx:root>
