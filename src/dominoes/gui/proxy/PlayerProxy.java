@@ -10,7 +10,7 @@ import dominoes.players.DominoPlayer;
 import dominoes.players.LocalPlayer;
 
 /**
- * PlayerProxy - Intercepts makePlay() method.
+ * PlayerProxy - Proxy class used by DominoUIImp (GUI Main Controller). Intercepts makePlay() method.
  *
  * @author Hisham Khalifa
  */
@@ -32,6 +32,7 @@ public class PlayerProxy implements DominoPlayer {
         // For both AI and human. Will enable Draw button control and rethrow CantPlayException if can't play.
          try { newPlay = realPlayer.makePlay(table); }
          catch (CantPlayException e) {
+             this.control.drawButtonRename(); // Rename to Pass if boneyard is 0.
              this.control.setDrawButtonDisable(false);
              throw e;
          }

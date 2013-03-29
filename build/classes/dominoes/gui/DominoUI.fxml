@@ -208,10 +208,10 @@
             <Button id="button" font="$x2" onAction="#quitButtonAction" prefHeight="43.0" prefWidth="140.0" style="-fx-background-radius: 00 00 50 50;" text="Quit" />
           </children>
         </VBox>
+        <Separator prefHeight="7.0" prefWidth="57.0" visible="false" />
         <VBox id="VBox" alignment="CENTER" spacing="-4.0">
           <children>
-            <Button fx:id="button" font="$x2" onAction="#passButtonAction" prefHeight="43.0" prefWidth="140.0" style="-fx-background-radius: 50 50 00 00;&#10;-fx-effect: dropshadow( one-pass-box , rgba(100, 100, 100, 0.5) , 0, 0.0 , 0 , 1 );&#10;" text="Pass Turn" textAlignment="CENTER" />
-            <Button id="button" fx:id="drawButton" font="$x2" onAction="#drawButtonAction" prefHeight="43.0" prefWidth="140.0" style="-fx-background-radius: 00 00 50 50;" text="Draw" />
+            <Button id="button" fx:id="drawButton" font="$x2" onAction="#drawButtonAction" prefHeight="43.0" prefWidth="140.0" text="Draw" />
           </children>
         </VBox>
         <Separator prefHeight="94.0" prefWidth="95.0" visible="false" />

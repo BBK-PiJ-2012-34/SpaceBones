@@ -142,7 +142,7 @@ public class BoneBucketControl extends AnchorPane {
         double scaleY = 0.15;
 
         boolean tooManyFlag = false;
-        boolean epsilonFlag = true;
+        boolean ellipseFlag = true;
 
         int size = bonesArrayList.size();
 
@@ -155,21 +155,25 @@ public class BoneBucketControl extends AnchorPane {
         // Add bones to HBox.
         for (Bone bone : bonesArrayList) {
 
-            if (tooManyFlag & boneCount > 3 & boneCount < (size - 3)) {
-                if (epsilonFlag) {
-                    epsilonFlag = false;
-                    BoneControl boneControl = new BoneControl();
+            // For long table, don't show all bones. Place an "ellipse" bone indicator.
+            if (tooManyFlag) {
 
-                    bonesHBox.getChildren().add(boneControl);
+                if (boneCount >= 3 & boneCount < (size - 3)) {
+                    if (ellipseFlag) {
+                        ellipseFlag = false;
+                        BoneControl boneControl = new BoneControl();
 
-                    // Scale Set Spacing in hbox to -100 when doing this
-                    boneControl.setScaleX(scaleX);
-                    boneControl.setScaleY(scaleY);
+                        bonesHBox.getChildren().add(boneControl);
 
+                        boneControl.setScaleX(scaleX);
+                        boneControl.setScaleY(scaleY);
+                    }
                     boneCount++;
                     continue;
                 }
+                
             }
+
             BoneControl boneControl = new BoneControl(bone);
 
             boneControl.setOwningBucket(this);

@@ -74,7 +74,6 @@ public class DominoUIImp implements Initializable, DominoUI {
     private TextField pointsToWinField;
     @FXML
     private Button drawButton;
-    
     @FXML
     private Label roundCountLabel;
     @FXML
@@ -137,7 +136,7 @@ public class DominoUIImp implements Initializable, DominoUI {
 
         // Add bucket to our vbox
         vBox.getChildren().add(2, playerBoneBucket);
-        
+
         // Draw button initially disabled
         setDrawButtonDisable(true);
 
@@ -149,11 +148,21 @@ public class DominoUIImp implements Initializable, DominoUI {
         // Play UI effects from the beginning
         startEffects();
     }
-    
+
     public void setDrawButtonDisable(boolean b) {
+
         drawButton.setDisable(true);
-    }  
-    
+    }
+
+    public void drawButtonRename() {
+        if (this.boneyard.size() == 0) {
+            drawButton.setText("Pass");
+        } else {
+            drawButton.setText("Draw");
+        }
+
+    }
+
     private void startEffects() {
         ScaleTransition st;
         st = new ScaleTransition(Duration.seconds(2.0), vBox);
@@ -188,33 +197,37 @@ public class DominoUIImp implements Initializable, DominoUI {
         this.roundCount = 1;
         this.pointsToWin = Integer.parseInt(this.pointsToWinField.getText());
 
-        if (player1KindChoiceBox.getSelectionModel().selectedIndexProperty().intValue() == 0) {
+
+        int player1TypeChoice = player1KindChoiceBox.getSelectionModel().selectedIndexProperty().intValue();
+        int player2TypeChoice = player2KindChoiceBox.getSelectionModel().selectedIndexProperty().intValue();
+
+        if (player1TypeChoice == 0) {
             playerOne = PlayerBuilder.BuildPlayer(PlayerBuilder.LOCAL_PLAYER, this);
         }
 
-        if (player1KindChoiceBox.getSelectionModel().selectedIndexProperty().intValue() == 1) {
+        if (player1TypeChoice == 1) {
             playerOne = PlayerBuilder.BuildPlayer(PlayerBuilder.ADVANCED_AI_PLAYER, this);
         }
 
-        if (player1KindChoiceBox.getSelectionModel().selectedIndexProperty().intValue() == 2) {
+        if (player1TypeChoice == 2) {
             playerOne = PlayerBuilder.BuildPlayer(PlayerBuilder.SIMPLE_AI_PLAYER, this);
         }
 
-        if (player2KindChoiceBox.getSelectionModel().selectedIndexProperty().intValue() == 0) {
+        if (player2TypeChoice == 0) {
             playerTwo = PlayerBuilder.BuildPlayer(PlayerBuilder.LOCAL_PLAYER, this);
         }
 
-        if (player2KindChoiceBox.getSelectionModel().selectedIndexProperty().intValue() == 1) {
+        if (player2TypeChoice == 1) {
             playerTwo = PlayerBuilder.BuildPlayer(PlayerBuilder.ADVANCED_AI_PLAYER, this);
         }
 
-        if (player2KindChoiceBox.getSelectionModel().selectedIndexProperty().intValue() == 2) {
+        if (player2TypeChoice == 2) {
             playerTwo = PlayerBuilder.BuildPlayer(PlayerBuilder.SIMPLE_AI_PLAYER, this);
         }
 
         playerOne.setName(player1NameField.getText());
         playerTwo.setName(player2NameField.getText());
-        
+
         game = new Dominoes(this, playerOne, playerTwo, pointsToWin, maxDots);
 
         DominoPlayer winner = game.play(); // This will block until game is over
@@ -229,11 +242,6 @@ public class DominoUIImp implements Initializable, DominoUI {
     @FXML
     private void drawButtonAction(ActionEvent event) {
         setDrawButtonDisable(true);
-    }
-
-    @FXML
-    private void passButtonAction(ActionEvent event) {
-        System.out.println("Pass Turn clicked.");
     }
 
     @FXML
