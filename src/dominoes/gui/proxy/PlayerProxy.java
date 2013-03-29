@@ -8,6 +8,8 @@ import dominoes.Table;
 import dominoes.gui.DominoUIImp;
 import dominoes.players.DominoPlayer;
 import dominoes.players.LocalPlayer;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * PlayerProxy - Proxy class used by DominoUIImp (GUI Main Controller). Intercepts makePlay() method.
@@ -42,6 +44,9 @@ public class PlayerProxy implements DominoPlayer {
         // Otherwise we'll get to here in which we let human player play, and for AI we just return the play.
         if (!this.isHuman) // AI played bone, so return it.
         {
+
+            
+            
             this.control.delayAIPlay(this);
 
             return newPlay;

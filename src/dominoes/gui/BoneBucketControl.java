@@ -146,7 +146,7 @@ public class BoneBucketControl extends AnchorPane {
 
         int size = bonesArrayList.size();
 
-        if (size > 10) {
+        if (size > 10 & this.horizontal) {
             tooManyFlag = true;
         }
 

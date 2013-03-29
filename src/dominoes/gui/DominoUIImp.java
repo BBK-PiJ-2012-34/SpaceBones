@@ -383,6 +383,9 @@ public class DominoUIImp implements Initializable, DominoUI {
         this.statusLabel.setText(player.getName() + "'s Turn (AI)");
         fadeInLabel(this.statusLabel);
         // showNextPlayerPrompt();
+        
+        
+        
     }
 
     private void invalidMoveStatusShow() {
