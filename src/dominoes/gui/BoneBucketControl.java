@@ -40,7 +40,7 @@ public class BoneBucketControl extends AnchorPane {
     public Label titleCard; // This is public for subclassing control
 
     public BoneBucketControl() {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("bone_bucket_control.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("BoneBucketControl.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
 
@@ -59,7 +59,7 @@ public class BoneBucketControl extends AnchorPane {
     }
 
     public BoneBucketControl(Bone[] bonesArray) {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("bone_bucket_control.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("BoneBucketControl.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
 

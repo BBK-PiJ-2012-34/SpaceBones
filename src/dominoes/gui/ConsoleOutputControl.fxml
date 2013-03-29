@@ -7,9 +7,12 @@
 <?import javafx.scene.effect.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" minWidth="613.9998779296875" prefHeight="400.0" prefWidth="788.9998779296875" xmlns:fx="http://javafx.com/fxml" fx:controller="dominoes.OptionsController">
+<AnchorPane id="AnchorPane" minWidth="613.9998779296875" prefHeight="400.0" prefWidth="788.9998779296875" xmlns:fx="http://javafx.com/fxml" fx:controller="dominoes.gui.ConsoleOutputControl">
   <children>
     <Pane id="pane" layoutX="61.0" layoutY="63.0" maxHeight="225.0" maxWidth="1024.0" minHeight="72.0" minWidth="628.0" onMousePressed="#mousePressedAction" opacity="0.95" prefHeight="225.0" prefWidth="635.0" style="-fx-border-style: solid;&#10;-fx-border-color: #41cc00;&#10;-fx-border-radius: 15px;&#10;-fx-border-width: 3px;">
+      <children>
+        <TextArea layoutX="14.0" layoutY="14.0" prefHeight="197.0" prefWidth="607.0" text="vdddf&#10;" wrapText="true" />
+      </children>
       <effect>
         <Glow>
           <input>

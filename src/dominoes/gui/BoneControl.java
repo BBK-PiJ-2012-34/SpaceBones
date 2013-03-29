@@ -42,7 +42,7 @@ public class BoneControl extends VBox {
 
 
         public BoneControl() {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("bone_control.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("BoneControl.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
 
@@ -61,7 +61,7 @@ public class BoneControl extends VBox {
     
     
     public BoneControl(Bone bone) {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("bone_control.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("BoneControl.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
 

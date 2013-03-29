@@ -1,6 +1,6 @@
 package dominoes;
 
-import dominoes.gui.DominoUIImp;
+import dominoes.gui.DominoUIImpl;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -19,8 +19,8 @@ public class SpaceBones extends Application {
     public void start(Stage primaryStage) throws Exception {
         primaryStage.initStyle(StageStyle.TRANSPARENT);
         
-        //DominoUI.fxml controller class is DominoUIImp as defined in DominoUI.fxml
-        Parent root = FXMLLoader.load(DominoUIImp.class.getResource("DominoUI.fxml"));
+        //DominoUI.fxml controller class is DominoUIImpl as defined in DominoUI.fxml
+        Parent root = FXMLLoader.load(DominoUIImpl.class.getResource("DominoUIImpl.fxml"));
 
         Scene scene = new Scene(root);
         scene.setFill(Color.TRANSPARENT);

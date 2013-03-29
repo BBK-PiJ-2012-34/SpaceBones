@@ -5,22 +5,23 @@ import dominoes.BoneYard;
 import dominoes.CantPlayException;
 import dominoes.Play;
 import dominoes.Table;
-import dominoes.gui.DominoUIImp;
+import dominoes.gui.DominoUIImpl;
 import dominoes.players.DominoPlayer;
 import dominoes.players.LocalPlayer;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- * PlayerProxy - Proxy class used by DominoUIImp (GUI Main Controller). Intercepts makePlay() method.
+ * PlayerProxy - Proxy class used by DominoUIImpl (GUI Main Controller). Intercepts makePlay() method.
  *
  * @author Hisham Khalifa
  */
 public class PlayerProxy implements DominoPlayer {
 
     private DominoPlayer realPlayer;
-    private DominoUIImp control;
+    private DominoUIImpl control;
     private Boolean isHuman;
+
 
     public PlayerProxy(DominoPlayer player) {
         this.realPlayer = player;
@@ -46,8 +47,10 @@ public class PlayerProxy implements DominoPlayer {
         if (!this.isHuman) // AI played bone, so return it.
         {
 
-            this.control.delayAIPlay(this, table);
 
+                this.control.delayAIPlay(this, table);
+
+            
             return newPlay;
         }
 
@@ -127,11 +130,11 @@ public class PlayerProxy implements DominoPlayer {
         this.realPlayer = realPlayer;
     }
 
-    public DominoUIImp getControl() {
+    public DominoUIImpl getControl() {
         return control;
     }
 
-    public void setControl(DominoUIImp control) {
+    public void setControl(DominoUIImpl control) {
         this.control = control;
     }
 

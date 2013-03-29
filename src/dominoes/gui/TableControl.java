@@ -70,8 +70,8 @@ public class TableControl extends BoneBucketControl {
 
                 source.getScene().setCursor(Cursor.DEFAULT);
 
-                if (getOwner() instanceof DominoUIImp) {
-                    DominoUIImp owner = (DominoUIImp) getOwner();
+                if (getOwner() instanceof DominoUIImpl) {
+                    DominoUIImpl owner = (DominoUIImpl) getOwner();
                     owner.setPlayMade(bone);
 
                     double dropX = event.getX();

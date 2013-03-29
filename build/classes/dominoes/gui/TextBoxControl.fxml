@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane id="" minWidth="872.0" prefHeight="149.0" prefWidth="872.0" xmlns:fx="http://javafx.com/fxml" fx:controller="dominoes.gui.TextBoxController">
+<AnchorPane id="" minWidth="872.0" prefHeight="149.0" prefWidth="872.0" xmlns:fx="http://javafx.com/fxml" fx:controller="dominoes.gui.TextBoxControl">
   <children>
     <Pane fx:id="pane" layoutX="14.0" layoutY="42.0" maxHeight="78.0" maxWidth="1024.0" minHeight="72.0" minWidth="844.0" onMousePressed="#mousePressedAction" opacity="0.95" prefHeight="78.0" prefWidth="844.0" style="-fx-border-style: solid;&#10;-fx-border-color: #41cc00;&#10;-fx-border-radius: 15px;&#10;-fx-border-width: 3px;">
       <children>

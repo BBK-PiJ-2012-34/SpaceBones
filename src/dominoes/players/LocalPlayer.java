@@ -4,7 +4,7 @@
  */
 package dominoes.players;
 
-import dominoes.gui.DominoUIImp;
+import dominoes.gui.DominoUIImpl;
 import dominoes.*;
 import java.util.ArrayList;
 
@@ -18,7 +18,7 @@ public class LocalPlayer implements DominoPlayer {
     private ArrayList<Bone> playerHand = new ArrayList<>();
     private String playerName = "";
     private int playerPoints = 0;
-    private DominoUIImp control;
+    private DominoUIImpl control;
 
     public LocalPlayer() {
     }
@@ -118,11 +118,11 @@ public class LocalPlayer implements DominoPlayer {
 
     }
 
-    public DominoUIImp getControl() {
+    public DominoUIImpl getControl() {
         return control;
     }
 
-    public void setControl(DominoUIImp control) {
+    public void setControl(DominoUIImpl control) {
         this.control = control;
     }
 }

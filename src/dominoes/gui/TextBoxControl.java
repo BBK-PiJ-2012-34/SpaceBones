@@ -14,11 +14,11 @@ import javafx.scene.layout.Pane;
 import javafx.util.Duration;
 
 /**
- * TextBoxController Controller
+ * TextBoxControl Controller
  *
  * @author Hisham Khalifa
  */
-public class TextBoxController implements Initializable {
+public class TextBoxControl implements Initializable {
 
     @FXML
     Pane pane;

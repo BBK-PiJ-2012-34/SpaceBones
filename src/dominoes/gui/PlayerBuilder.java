@@ -16,7 +16,7 @@ public class PlayerBuilder {
     public static final String ADVANCED_AI_PLAYER = "dominoes.players.AIPlayer";
     public static final String SIMPLE_AI_PLAYER = "dominoes.players.RuleBaseAIPlayer";
 
-    static PlayerProxy BuildPlayer(String typeString, DominoUIImp delegate) {
+    static PlayerProxy BuildPlayer(String typeString, DominoUIImpl delegate) {
         Class classForPlayer;
         PlayerProxy playerProxy = null;
 

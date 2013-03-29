@@ -12,10 +12,6 @@ import dominoes.players.DominoPlayer;
 import java.io.InputStream;
 import java.net.URL;
 import java.util.ResourceBundle;
-import java.util.Timer;
-import java.util.TimerTask;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.animation.FadeTransition;
 import javafx.animation.Interpolator;
 import javafx.animation.ScaleTransition;
@@ -45,7 +41,7 @@ import javafx.util.Duration;
  *
  * @author Hisham Khalifa
  */
-public class DominoUIImp implements Initializable, DominoUI {
+public class DominoUIImpl implements Initializable, DominoUI {
 
     final private static int maxDots = 6;
     private Dominoes game;
@@ -256,6 +252,7 @@ public class DominoUIImp implements Initializable, DominoUI {
     // DominoUI Methods
     @Override
     public void display(DominoPlayer[] players, Table table, BoneYard boneyard) {
+
         // Information in each DominoPlayer used by UI
         this.playerOne = (PlayerProxy) players[0];
         this.playerTwo = (PlayerProxy) players[1];
@@ -265,8 +262,8 @@ public class DominoUIImp implements Initializable, DominoUI {
 
         updateStatusBarInfo();
         updateTableBonesBox();
-
     }
+
 
     @Override
     public void displayRoundWinner(DominoPlayer player) {
@@ -327,7 +324,7 @@ public class DominoUIImp implements Initializable, DominoUI {
         }
     }
 
-    public void updatePlayerBonesBox(DominoPlayer player) {      
+    public void updatePlayerBonesBox(DominoPlayer player) {
         playerBoneBucket.removeAllBones();
         playerBoneBucket.setBadgeName(player.getName());
 
@@ -349,16 +346,20 @@ public class DominoUIImp implements Initializable, DominoUI {
     public Play getPlay(DominoPlayer player, Table table) {
 
         String playerName;
-        playerName = player.getName();       
+        playerName = player.getName();
         this.statusLabel.setText(playerName + "'s Turn");
         this.playerBoneBucket.titleCard.setText(playerName);
+        this.playerBoneBucket.removeAllBones();
 
         // Display modal prompt here for human player to show his bones and play
         // We check if it's not the same player in case it was just an invalid play needing a replay
         // or the fact that the other player is AI hence no need to hide human player's bones.
-        if ((lastPlayer != player) || (lastPlayer == null)) {
-            playerBoneBucket.removeAllBones();
-            showNextPlayerPrompt();
+        if ((lastPlayer != player) & (lastPlayer != null)) {
+            PlayerProxy lastPlayerProxy = (PlayerProxy)lastPlayer;
+            // Only hide current player's bones if last (other) player is also a human.
+            if (lastPlayerProxy.getIsHuman()) {
+                showNextPlayerPrompt();
+            }
             this.invalidMoveLabel.setText("");
         }
 
@@ -386,8 +387,9 @@ public class DominoUIImp implements Initializable, DominoUI {
         this.currentPlayer = (PlayerProxy) player;
         updatePlayerBonesBox(this.currentPlayer);
         updateTable(table);
-
         
+
+
         lastPlayer = player;
         if ((lastPlayer != player) || (lastPlayer == null)) {
             this.invalidMoveLabel.setText("");
@@ -396,7 +398,7 @@ public class DominoUIImp implements Initializable, DominoUI {
         this.statusLabel.setText(player.getName() + "'s Turn (AI)");
         fadeInLabel(this.statusLabel);
 
- 
+
     }
 
     private void invalidMoveStatusShow() {
@@ -440,7 +442,7 @@ public class DominoUIImp implements Initializable, DominoUI {
         nextPlayerPromptStage.initStyle(StageStyle.TRANSPARENT);
 
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("text_box_control.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("TextBoxControl.fxml"));
 
             Scene scene = new Scene(root);
             scene.setFill(Color.TRANSPARENT);

@@ -13,7 +13,7 @@
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane id="" maxHeight="905.9998779296875" maxWidth="1024.0" minHeight="746.9998779296875" minWidth="1024.0" prefHeight="817.9998779296875" prefWidth="1024.0" style="-fx-background-color:rgb(0,0,0,0);&#10;-fx-background-radius: 50 50 00 00;" xmlns:fx="http://javafx.com/fxml" fx:controller="dominoes.gui.DominoUIImp">
+<AnchorPane id="" maxHeight="905.9998779296875" maxWidth="1024.0" minHeight="746.9998779296875" minWidth="1024.0" prefHeight="817.9998779296875" prefWidth="1024.0" style="-fx-background-color:rgb(0,0,0,0);&#10;-fx-background-radius: 50 50 00 00;" xmlns:fx="http://javafx.com/fxml" fx:controller="dominoes.gui.DominoUIImpl">
   <children>
     <Rectangle arcHeight="34.0" arcWidth="200.0" height="64.0" layoutX="193.0" layoutY="40.0" stroke="#9f9f9f" strokeType="INSIDE" strokeWidth="0.0" width="633.0" />
     <Rectangle fx:id="rect" arcHeight="88.0" arcWidth="99.0" height="752.9998779296875" layoutY="51.0" stroke="#606060" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeType="INSIDE" strokeWidth="0.0" width="1024.0" />
