@@ -264,7 +264,6 @@ public class DominoUIImpl implements Initializable, DominoUI {
         updateTableBonesBox();
     }
 
-
     @Override
     public void displayRoundWinner(DominoPlayer player) {
         // Show round win graphics
@@ -355,7 +354,7 @@ public class DominoUIImpl implements Initializable, DominoUI {
         // We check if it's not the same player in case it was just an invalid play needing a replay
         // or the fact that the other player is AI hence no need to hide human player's bones.
         if ((lastPlayer != player) & (lastPlayer != null)) {
-            PlayerProxy lastPlayerProxy = (PlayerProxy)lastPlayer;
+            PlayerProxy lastPlayerProxy = (PlayerProxy) lastPlayer;
             // Only hide current player's bones if last (other) player is also a human.
             if (lastPlayerProxy.getIsHuman()) {
                 showNextPlayerPrompt();
@@ -374,7 +373,7 @@ public class DominoUIImpl implements Initializable, DominoUI {
 
         Boolean boneDropped = false;
 
-        // We just want to wait for drag'n'drop before returning WITHOUT BLOCKING any other windows.
+        // Dummy stage - We just want to wait for drag'n'drop before returning WITHOUT BLOCKING any other windows.
         makePlayShowAndWaitStage = new Stage();
         makePlayShowAndWaitStage.initModality(Modality.NONE);
         makePlayShowAndWaitStage.showAndWait();
@@ -387,8 +386,6 @@ public class DominoUIImpl implements Initializable, DominoUI {
         this.currentPlayer = (PlayerProxy) player;
         updatePlayerBonesBox(this.currentPlayer);
         updateTable(table);
-        
-
 
         lastPlayer = player;
         if ((lastPlayer != player) || (lastPlayer == null)) {
@@ -397,8 +394,6 @@ public class DominoUIImpl implements Initializable, DominoUI {
 
         this.statusLabel.setText(player.getName() + "'s Turn (AI)");
         fadeInLabel(this.statusLabel);
-
-
     }
 
     private void invalidMoveStatusShow() {
@@ -452,6 +447,7 @@ public class DominoUIImpl implements Initializable, DominoUI {
         } catch (Exception e) {
             e.printStackTrace();
         }
+
     }
 
     void submitPlay() {
@@ -489,7 +485,7 @@ public class DominoUIImpl implements Initializable, DominoUI {
         this.playSideMade = playSideMade;
     }
 
-    // Debug
+    // Console output methods (mainly for AI play which doesn't use the GUI).
     private void printBone(Bone bone) {
         System.out.print("[" + bone.left() + "," + bone.right() + "]");
     }
@@ -502,6 +498,7 @@ public class DominoUIImpl implements Initializable, DominoUI {
             System.out.print(" ");
         }
         System.out.print("\n ");
+        
     }
 
     private void printOptions(DominoPlayer player) {
