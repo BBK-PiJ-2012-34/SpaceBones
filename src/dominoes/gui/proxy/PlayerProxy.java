@@ -32,22 +32,21 @@ public class PlayerProxy implements DominoPlayer {
         newPlay = null;
 
         // For both AI and human. Will enable Draw button control and rethrow CantPlayException if can't play.
-         try { newPlay = realPlayer.makePlay(table); }
-         catch (CantPlayException e) {
-             this.control.drawButtonRename(); // Rename to Pass if boneyard is 0.
-             this.control.setDrawButtonDisable(false);
-             throw e;
-         }
-         
-         this.control.setDrawButtonDisable(true);
+        try {
+            newPlay = realPlayer.makePlay(table);
+        } catch (CantPlayException e) {
+            this.control.drawButtonRename(); // Rename to Pass if boneyard is 0.
+            this.control.setDrawButtonDisable(false);
+            throw e;
+        }
+
+        this.control.setDrawButtonDisable(true);
 
         // Otherwise we'll get to here in which we let human player play, and for AI we just return the play.
         if (!this.isHuman) // AI played bone, so return it.
         {
 
-            
-            
-            this.control.delayAIPlay(this);
+            this.control.delayAIPlay(this, table);
 
             return newPlay;
         }
@@ -69,14 +68,14 @@ public class PlayerProxy implements DominoPlayer {
         realPlayer.takeBack(bone);
 
     }
-
+    
     @Override
     public void draw(BoneYard boneyard) {
 
-        realPlayer.draw(boneyard);    
-        
+        realPlayer.draw(boneyard);
+
         this.control.updatePlayerBonesBox(realPlayer);
-        
+
     }
 
     @Override

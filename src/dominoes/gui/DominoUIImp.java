@@ -12,6 +12,10 @@ import dominoes.players.DominoPlayer;
 import java.io.InputStream;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.Timer;
+import java.util.TimerTask;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.animation.FadeTransition;
 import javafx.animation.Interpolator;
 import javafx.animation.ScaleTransition;
@@ -261,6 +265,7 @@ public class DominoUIImp implements Initializable, DominoUI {
 
         updateStatusBarInfo();
         updateTableBonesBox();
+
     }
 
     @Override
@@ -322,7 +327,7 @@ public class DominoUIImp implements Initializable, DominoUI {
         }
     }
 
-    public void updatePlayerBonesBox(DominoPlayer player) {
+    public void updatePlayerBonesBox(DominoPlayer player) {      
         playerBoneBucket.removeAllBones();
         playerBoneBucket.setBadgeName(player.getName());
 
@@ -343,13 +348,16 @@ public class DominoUIImp implements Initializable, DominoUI {
      */
     public Play getPlay(DominoPlayer player, Table table) {
 
-        this.statusLabel.setText(player.getName() + "'s Turn");
-        fadeInLabel(this.statusLabel);
+        String playerName;
+        playerName = player.getName();       
+        this.statusLabel.setText(playerName + "'s Turn");
+        this.playerBoneBucket.titleCard.setText(playerName);
 
         // Display modal prompt here for human player to show his bones and play
         // We check if it's not the same player in case it was just an invalid play needing a replay
         // or the fact that the other player is AI hence no need to hide human player's bones.
         if ((lastPlayer != player) || (lastPlayer == null)) {
+            playerBoneBucket.removeAllBones();
             showNextPlayerPrompt();
             this.invalidMoveLabel.setText("");
         }
@@ -361,7 +369,6 @@ public class DominoUIImp implements Initializable, DominoUI {
         updatePlayerBonesBox(this.currentPlayer);
         updateTable(table);
 
-        System.out.println("Player options: ");
         printOptions(player);
 
         Boolean boneDropped = false;
@@ -374,7 +381,13 @@ public class DominoUIImp implements Initializable, DominoUI {
         return new Play(getPlayMade(), getPlaySideMade());
     }
 
-    public void delayAIPlay(DominoPlayer player) {
+    public void delayAIPlay(DominoPlayer player, Table table) {
+        lastPlayer = player;
+        this.currentPlayer = (PlayerProxy) player;
+        updatePlayerBonesBox(this.currentPlayer);
+        updateTable(table);
+
+        
         lastPlayer = player;
         if ((lastPlayer != player) || (lastPlayer == null)) {
             this.invalidMoveLabel.setText("");
@@ -382,10 +395,8 @@ public class DominoUIImp implements Initializable, DominoUI {
 
         this.statusLabel.setText(player.getName() + "'s Turn (AI)");
         fadeInLabel(this.statusLabel);
-        // showNextPlayerPrompt();
-        
-        
-        
+
+ 
     }
 
     private void invalidMoveStatusShow() {
@@ -411,7 +422,6 @@ public class DominoUIImp implements Initializable, DominoUI {
     }
 
     private void showNextPlayerPrompt() {
-        playerBoneBucket.removeAllBones();
         if (nextPlayerPromptStage != null) {
             nextPlayerPromptStage.showAndWait();
         } else {
@@ -493,6 +503,7 @@ public class DominoUIImp implements Initializable, DominoUI {
     }
 
     private void printOptions(DominoPlayer player) {
+        System.out.println("Player options: ");
         Bone[] hand = player.bonesInHand();
         int option = 0;
         for (Bone eachBone : hand) {
