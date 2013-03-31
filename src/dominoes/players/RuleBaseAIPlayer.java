@@ -58,9 +58,7 @@ public class RuleBaseAIPlayer implements DominoPlayer {
             throw new CantPlayException();
         }
     }
-    
-    
-    
+
     /*
      * Checks to see if the opponent has passed and records what suits they
      * passed on.

@@ -160,7 +160,6 @@ public class DominoUIImpl implements Initializable, DominoUI {
         } else {
             drawButton.setText("Draw");
         }
-
     }
 
     private void startEffects() {
